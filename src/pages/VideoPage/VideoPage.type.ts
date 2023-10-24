@@ -1,9 +1,7 @@
-export interface Snippet {
-    title: string;
-    description: string;
+export interface YouTubeVideoID {
+    videoId?: string;
 }
 
-export interface VideoData {
-    id: string;
-    snippet: Snippet;
+export interface PlayerRefType {
+    getCurrentTime: () => number
 }

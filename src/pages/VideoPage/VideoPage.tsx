@@ -1,33 +1,59 @@
-import { useState, useEffect } from 'react';
-import { VideoData } from './VideoPage.type';
-import { VIDEO_URL } from '../../constants/constants';
+import { useEffect, useRef, useState } from 'react';
+import { IFRAME_API } from '../../constants/constants';
+import { YouTubeVideoID, PlayerRefType } from './VideoPage.type';
+import { Banner } from '../../components/Banner.tsx/Banner';
 
-export const VideoPage = (): JSX.Element => {
-    const [videoData, setVideoData] = useState<VideoData | null>(null);
+declare global {
+    interface Window {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        YT: any;
+        onYouTubeIframeAPIReady: () => void;
+    }
+}
+
+export const VideoPage = ({ videoId }: YouTubeVideoID) => {
+    const playerRef = useRef<PlayerRefType | null>(null);
+    const [isBanner, setIsBanner] = useState<boolean>(false)
 
     useEffect(() => {
-        const fetchVideoData = async () => {
-            try {
-                const response = await fetch(VIDEO_URL);
-                const data = await response.json();
+        const loadAPI = async () => {
+            await new Promise<void>((resolve) => {
+                const tag = document.createElement('script');
+                tag.src = IFRAME_API;
+                window.onYouTubeIframeAPIReady = () => resolve();
+                document.body.appendChild(tag);
+            });
 
-                setVideoData(data.items[0]);
-            } catch (error) {
-                console.error('Ошибка при получении данных видео:', error);
-            }
+            playerRef.current = new window.YT.Player('player', {
+                height: '720',
+                width: '1280',
+                videoId: videoId,
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
         };
 
-        fetchVideoData();
-    }, []);
+        loadAPI();
+    }, [videoId]);
+
+    const onPlayerStateChange = (event: { data: number }) => {
+        if (event.data === window.YT.PlayerState.PLAYING) {
+
+            setInterval(() => {
+                if (playerRef && playerRef.current) {
+                    const currentTime = Math.round(playerRef.current.getCurrentTime());
+                    setIsBanner(currentTime > 5);
+
+                }
+            }, 1000);
+        }
+    }
 
     return (
-        <div>
-            <iframe
-                width="1280"
-                height="720"
-                src={videoData ? `https://www.youtube.com/embed/${videoData.id}` : ""}
-                title={videoData ? videoData.snippet.title : ""}
-            />
-        </div>
-    )
+        <>
+            <div id="player"></div>
+            {isBanner && <Banner />}
+        </>
+    );
 }
