@@ -1,5 +1,4 @@
 .banner {
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -11,6 +10,8 @@
     padding: 30px 10px 10px 10px;
     text-align: center;
     background-color: #86D3F4;
+    transform: translate(0px, -50%);
+
 }
 
 .banner__title {
@@ -45,6 +46,7 @@
     color: #86D3F4;
     background-color: #000;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .banner__button > span {

@@ -1,7 +1,3 @@
-export interface YouTubeVideoID {
-    videoId?: string;
-}
-
-export interface PlayerRefType {
-    getCurrentTime: () => number
+export interface UrlVideoType {
+    urlVideo?: string;
 }

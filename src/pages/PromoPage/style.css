@@ -1,0 +1,14 @@
+.promo-page {
+    position: relative;
+    width: 100%;
+    height: 720px;
+}
+
+.promo-page__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: url("../../assets/scale.png") center no-repeat;
+    width: 100%;
+    height: 720px;
+}

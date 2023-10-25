@@ -1,0 +1,14 @@
+.video-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.video-page__loading {
+    position: absolute;
+    background: url("../../assets/video.png") center no-repeat;
+    width: 100%;
+    height: 720px;
+}
