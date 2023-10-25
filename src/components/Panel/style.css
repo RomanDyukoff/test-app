@@ -1,0 +1,33 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 380px;
+    height: 720px;
+    padding: 40px 24px;
+    background-color: #86D3F4;
+}
+
+.panel__title {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.panel__number {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.panel__text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}

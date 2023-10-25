@@ -1,0 +1,10 @@
+.key-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 88px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid #000;
+    cursor: pointer;
+}

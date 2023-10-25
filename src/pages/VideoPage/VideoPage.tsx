@@ -22,7 +22,7 @@ export const VideoPage = ({ urlVideo }: UrlVideoType) => {
             <section className='video-page'>
                 {state.isLoading && <div className='video-page__loading' />}
                 <ReactPlayer
-                    url={urlVideo || "https://youtu.be/M7FIvfx5J10"}
+                    url={urlVideo || 'https://youtu.be/M7FIvfx5J10'}
                     onProgress={({ playedSeconds }) => showBanner(playedSeconds)}
                     onReady={() => preload()}
                     controls={true}
