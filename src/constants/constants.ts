@@ -6,6 +6,8 @@ export const TEXTS_BANNER: TextsType = {
     button: 'ok'
 };
 
+export const KEYBOARD_NUM: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'Стереть', '0'];
+
 export enum ROUTES {
     HOMEPAGE = "/",
     PROMOPAGE = "/promo",
