@@ -13,7 +13,7 @@ interface DisableType {
 export const Panel = () => {
     const [state, setState] = useState<string[]>([]);
     const [isCheck, setIsCheck] = useState<boolean>(false);
-    const [isDisable, setIsDisable] = useState<DisableType>({ checkBox: isCheck, num: (state.length === 9) });
+    const [isDisable, setIsDisable] = useState<DisableType>({ checkBox: false, num: false });
     const [isSubmit, setIsSubmit] = useState<boolean>(false);
 
     useEffect(() => {
