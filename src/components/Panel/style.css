@@ -67,3 +67,22 @@
     line-height: normal;
     text-transform: uppercase;
 }
+
+.panel-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.panel-end > h2 {
+    margin-bottom: 15px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+    word-spacing: 4rem;
+}
