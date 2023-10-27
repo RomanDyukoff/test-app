@@ -54,6 +54,10 @@
     cursor: pointer;
 }
 
+.panel__button:focus {
+    border: 1px solid #fff;
+}
+
 .panel__button:disabled {
     border: 1px solid #4E4E4E;
     color: #4E4E4E;

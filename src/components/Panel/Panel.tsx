@@ -4,13 +4,9 @@ import { Checkbox } from '../Checkbox/Checkbox';
 import { TEXTS_PANEL } from '../../constants/constants';
 
 import './style.css';
+import { DisableType, PanelPropType } from './Panel.type';
 
-interface DisableType {
-    checkBox: boolean;
-    num: boolean;
-}
-
-export const Panel = () => {
+export const Panel = ({ refEnter }: PanelPropType) => {
     const [state, setState] = useState<string[]>([]);
     const [isCheck, setIsCheck] = useState<boolean>(false);
     const [isDisable, setIsDisable] = useState<DisableType>({ checkBox: false, num: false });
@@ -58,6 +54,7 @@ export const Panel = () => {
                         <Keypad className='panel__keypad' handleButtonClick={handleButtonClick} />
                         <Checkbox handleChange={handleInputChange} isCheck={isCheck} text={TEXTS_PANEL.label} />
                         <button
+                            ref={refEnter}
                             className='panel__button'
                             disabled={!(isDisable.checkBox && isDisable.num)}
                             onClick={() => setIsSubmit(true)}
